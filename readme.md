@@ -20,7 +20,7 @@ Observação: A cifra utilizada é relativamente simples e pode ser quebrada com
 Como compilar e executar:
 1. Salve todos os arquivos .c e .h em um mesmo diretório.
 2. Compile o código usando um compilador C (como GCC).
-3. Bash: gcc main.c codificacao.c hash.c pilha.c deque.c -o codificador
+3.     Bash: gcc main.c codificacao.c hash.c pilha.c deque.c -o codificador
 
 Execute o programa:
 Bash
