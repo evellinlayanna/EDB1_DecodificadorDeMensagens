@@ -29,6 +29,6 @@ Bash
 
 Exemplo de uso:
 
-Digite a mensagem para codificar: eita
-Mensagem codificada: glxf
-Mensagem decodificada: eita
+    Digite a mensagem para codificar: eita
+    Mensagem codificada: glxf
+    Mensagem decodificada: eita
