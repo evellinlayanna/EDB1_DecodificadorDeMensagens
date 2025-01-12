@@ -9,14 +9,15 @@
 #define TAM_BUFFER 1024 // Tamanho temporário para leitura de entrada
 
 int main() {
-    Pilha pilha;
-    Deque deque;
-    Hash hash;
+    Pilha pilha; // Armazena a mensagem original
+    Deque deque; // Armazena mensagens codificada
+    Hash hash; // Armazena as frequências de caracteres
 
     inicializarPilha(&pilha);
     inicializarDeque(&deque);
     inicializarHash(&hash);
 
+    // Alocação de memória
     char *mensagem = (char *)malloc(TAM_BUFFER * sizeof(char));
     char *codificada = NULL;
     char *decodificada = NULL;
@@ -30,7 +31,6 @@ int main() {
     fgets(mensagem, TAM_BUFFER, stdin);
     mensagem[strcspn(mensagem, "\n")] = '\0'; // Remover o caractere de nova linha
 
-    // Ajustar buffers dinâmicos para o tamanho da mensagem
     codificada = (char *)malloc((strlen(mensagem) + 1) * sizeof(char));
     decodificada = (char *)malloc((strlen(mensagem) + 1) * sizeof(char));
 
@@ -42,21 +42,22 @@ int main() {
         return 1;
     }
 
-    // Codificação
-    empilhar(&pilha, mensagem);
-    codificarMensagem(mensagem, codificada, &hash);
-    inserirFim(&deque, codificada);
+    // Processo de codificação
+    empilhar(&pilha, mensagem);  // A mensagem original é empilhada
+    codificarMensagem(mensagem, codificada, &hash);  // A função codificarMensagem utiliza a tabela de frequências
+    inserirFim(&deque, codificada);  // A mensagem codificada é inserida no final do deque
 
     printf("Mensagem codificada: %s\n", codificada);
 
     // Limpar tabela hash antes de decodificar
     limparHash(&hash);
 
-    // Decodificação
-    removerInicio(&deque, codificada);
-    decodificarMensagem(codificada, decodificada, &hash);
+    // Processo de decodificação
+    removerInicio(&deque, codificada);  // A mensagem codificada é removida do início do deque
+    decodificarMensagem(codificada, decodificada, &hash);  // Decodifica a mensagem
 
     printf("Mensagem decodificada: %s\n", decodificada);
+
 
     // Liberar memória
     free(mensagem);
